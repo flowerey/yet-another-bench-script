@@ -4,18 +4,20 @@ This directory contains all of the binaries required to run the benchmarking tes
 
 ### Binaries
 
-| Binary Name | Version | Compile Date | Architecture | OS | SHA-256 Hash<br>(VirusTotal Scan) |
+| Binary Name | Version | Compile Date | Architecture | OS | SHA-256 Hash |
 |:-:|:-:|:-:|:-:|:-:|:-:|
-| fio_x64 | 3.39 | 20-APR-2025 | x86_64 | 64-bit | [b511bda](https://www.virustotal.com/gui/file/b511bda3b26b6d840698f543d63e956d7466b8512c10ff0ada8292d556c33fb1) |
-| fio_x86 | 3.39 | 20-APR-2025 | i686 | 32-bit | [42e2e0b](https://www.virustotal.com/gui/file/42e2e0b0370faeb8e53dcf48dfff15daa9baaadfd196d9bdda57af196bedf0b3) |
-| fio_aarch64 | 3.39 | 20-APR-2025 | ARM (aarch64) | 64-bit | [e2942a2](https://www.virustotal.com/gui/file/e2942a26d4b249076486677c9c12cd7f1a572854a5e136597d1391e8ad75ffb0) |
-| fio_arm | 3.39 | 20-APR-2025 | ARM  | 32-bit | [3a96b1c](https://www.virustotal.com/gui/file/3a96b1cadfb51501b7fd54dc47a4dad666dc4382d4fe152116c62ae6a07485ea) |
-| iperf3_x64 | 3.18 | 14-DEC-2024 | x86_64 | 64-bit | [ef787ab](https://www.virustotal.com/gui/file/ef787abbe4b09c7958ed592df52dfe3a2848cbdee5b76738c757d7c51c348053) |
-| iperf3_x86 | 3.18 |  14-DEC-2024 | i686 | 32-bit | [655eb51](https://www.virustotal.com/gui/file/655eb51abc36ddaa624c1d0e98c6930e8b1e9d91c85e5a3443624355656be9b9) |
-| iperf3_aarch64 | 3.18 | 14-DEC-2024 | ARM (aarch64) | 64-bit | [92e5821](https://www.virustotal.com/gui/file/92e5821cfbaa1f8faf123b4d6773dc0f6efef221b9308668a21ddabc04a1de20) |
-| iperf3_arm | 3.15* | 20-OCT-2023 | ARM | 32-bit | [310e80f](https://www.virustotal.com/gui/file/310e80f442dda47fa0fe41225af85e8b91e75116dce5187f123380fd3c3c85a8) |
+| fio_x64 | 3.42 | 01-SEP-2026 | x86_64 | 64-bit | `167ba8f9` |
+| fio_x86 | 3.42 | 01-SEP-2026 | i686 | 32-bit | `a9081798` |
+| fio_aarch64 | 3.42 | 01-SEP-2026 | ARM (aarch64) | 64-bit | `8d7a72af` |
+| fio_arm | 3.42 | 01-SEP-2026 | ARM  | 32-bit | `406567d2` |
+| iperf3_x64 | 3.21 | 01-SEP-2026 | x86_64 | 64-bit | `f5d33b75` |
+| iperf3_x86 | 3.21 | 01-SEP-2026 | i686 | 32-bit | `011cbd10` |
+| iperf3_aarch64 | 3.21 | 01-SEP-2026 | ARM (aarch64) | 64-bit | `9d4f20d0` |
+| iperf3_arm | 3.21 | 01-SEP-2026 | ARM | 32-bit | `a7b40462` |
 
 Note: ARM compatibility is considered experimental. Static binaries for 32-bit and ARM-based machines are cross-compiled within a Holy Build Box container using the [musl toolchain](https://musl.cc/).
+
+\* All binaries are now static-pie linked with musl toolchains for maximum portability across all architectures (including Alpine and old glibc distros).
 
 ### Compile Notes
 

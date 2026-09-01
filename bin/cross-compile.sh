@@ -17,6 +17,8 @@ yum install -y xz
 cd ~
 curl -L "https://musl.cc/${CROSS}-cross.tgz" -o "${CROSS}-cross.tgz"
 tar xf "${CROSS}-cross.tgz"
+# ARM 32-bit: force static libatomic (libtool otherwise resolves -latomic to libatomic.so)
+[ "$ARCH" = "arm" ] && rm -f /root/${CROSS}-cross/${CROSS}/lib/libatomic.la /root/${CROSS}-cross/${CROSS}/lib/libatomic.so
 
 # download, compile, and install libaio as static library
 cd ~
@@ -30,10 +32,15 @@ source /hbb_exe/activate
 
 # download and compile fio
 cd ~
-curl -L https://github.com/axboe/fio/archive/fio-3.39.tar.gz -o "fio.tar.gz"
+curl -L https://github.com/axboe/fio/archive/fio-3.42.tar.gz -o "fio.tar.gz"
 tar xf fio.tar.gz
 cd fio-fio*
+# musl: sys/prctl.h already defines struct prctl_mm_map + all PR_* constants,
+# so including linux/prctl.h too causes a redefinition error
+grep -rl '<linux/prctl.h>' --include='*.c' --include='*.h' . | xargs -r sed -i 's|#include <linux/prctl.h>|#include <sys/prctl.h>|'
 CC=/root/${CROSS}-cross/bin/${CROSS}-gcc ./configure --disable-native --build-static
+# ARM 32-bit fix: 64-bit atomics (__atomic_*_8) need libatomic
+[ "$ARCH" = "arm" ] && echo 'LIBS += -latomic' >> Makefile
 make
 
 # verify no external shared library links
@@ -43,7 +50,7 @@ cp fio "/io/fio_$ARCH"
 
 # download and compile iperf
 cd ~
-curl -L https://github.com/esnet/iperf/archive/3.18.tar.gz -o "iperf.tar.gz"
+curl -L https://github.com/esnet/iperf/archive/3.21.tar.gz -o "iperf.tar.gz"
 tar xf iperf.tar.gz
 cd iperf*
 CC=/root/${CROSS}-cross/bin/${CROSS}-gcc ./configure --disable-shared --disable-profiling --build x86_64-pc-linux-gnu --host "${HOST}" --with-openssl=no --enable-static-bin
