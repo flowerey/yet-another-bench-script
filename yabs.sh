@@ -17,7 +17,7 @@ YABS_VERSION="v2026-09-01"
 echo -e '# ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## #'
 echo -e '#              Yet-Another-Bench-Script              #'
 echo -e '#                     '$YABS_VERSION'                    #'
-echo -e '# https://github.com/masonr/yet-another-bench-script #'
+echo -e '# https://github.com/flowerey/yet-another-bench-script #'
 echo -e '# ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## #'
 
 echo -e

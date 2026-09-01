@@ -18,13 +18,13 @@ View Daily and Historical 📊 **[YABS Usage Stats Here](https://stats.yabs.sh/)
 ## How to Run
 
 ```
-curl -sL yabs.sh | bash
+curl -sL https://raw.githubusercontent.com/flowerey/yet-another-bench-script/master/yabs.sh | bash
 ```
 
 or 
 
 ```
-wget -qO- yabs.sh | bash
+wget -qO- https://raw.githubusercontent.com/flowerey/yet-another-bench-script/master/yabs.sh | bash
 ```
 
 **Local fio/iperf3 Packages**: If the tested system has fio and/or iperf3 already installed, the local package will take precedence over the precompiled binary.
@@ -38,7 +38,7 @@ wget -qO- yabs.sh | bash
 ### Flags (Skipping Tests, Reducing iperf Locations, Geekbench 4/5/6/7, etc.)
 
 ```
-curl -sL yabs.sh | bash -s -- -flags
+curl -sL https://raw.githubusercontent.com/flowerey/yet-another-bench-script/master/yabs.sh | bash -s -- -flags
 ```
 
 | Flag | Description |
@@ -68,7 +68,7 @@ Options can be grouped together to skip multiple tests, i.e. `-fg` to skip the d
 Results from running this script can be sent to your benchmark results website of choice in JSON format. Invoke the `-s` flag and pass the URL to where the results should be submitted to:
 
 ```
-curl -sL https://yabs.sh | bash -s -- -s "https://example.com/yabs/post"
+curl -sL https://raw.githubusercontent.com/flowerey/yet-another-bench-script/master/yabs.sh | bash -s -- -s "https://example.com/yabs/post"
 ```
 
 JSON results can be sent to multiple endpoints by entering each site joined by a comma (e.g. "https://example.com/yabs/post,http://example.com/yabs2/post").
@@ -77,8 +77,8 @@ Sites supporting submission of YABS JSON results:
 
 | Website | Example Command |
 | --- | --- |
-| [YABSdb](https://yabsdb.com/) | `curl -sL yabs.sh \| bash -s -- -s "https://yabsdb.com/add"` |
-| [VPSBenchmarks](https://www.vpsbenchmarks.com/yabs/get_started) | `curl -sL yabs.sh \| bash -s -- -s https://www.vpsbenchmarks.com/yabs/upload` |
+| [YABSdb](https://yabsdb.com/) | `curl -sL https://raw.githubusercontent.com/flowerey/yet-another-bench-script/master/yabs.sh \| bash -s -- -s "https://yabsdb.com/add"` |
+| [VPSBenchmarks](https://www.vpsbenchmarks.com/yabs/get_started) | `curl -sL https://raw.githubusercontent.com/flowerey/yet-another-bench-script/master/yabs.sh \| bash -s -- -s https://www.vpsbenchmarks.com/yabs/upload` |
 | [ServerVerify](https://serververify.com/benchmarks) | (sign up for account) |
 
 Example JSON output: [example.json](bin/example.json).
